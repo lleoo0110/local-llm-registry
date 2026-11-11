@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "local-models",
+  "type": "object",
+  "required": ["schema_version", "makers", "models"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": 2},
+    "makers": {
+      "type": "object",
+      "propertyNames": {"$ref": "#/$defs/id"},
+      "additionalProperties": {"$ref": "#/$defs/maker"}
+    },
+    "models": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/model"}
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]([a-z0-9._-]{0,62}[a-z0-9])?$"
+    },
+    "label": {"type": "string", "minLength": 1, "maxLength": 80},
+    "maker": {
+      "type": "object",
+      "required": ["label", "maker", "kind", "order"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {"$ref": "#/$defs/label"},
+        "maker": {"$ref": "#/$defs/label"},
+        "kind": {"enum": ["local"]},
+        "order": {"type": "integer"}
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["id", "vendor", "label", "kind", "license", "variants"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "vendor": {"$ref": "#/$defs/id"},
+        "family": {"type": "string", "maxLength": 80},
+        "label": {"$ref": "#/$defs/label"},
+        "kind": {"enum": ["llm", "translate", "asr"]},
+        "license": {"$ref": "#/$defs/label"},
+        "capabilities": {
+          "type": "array",
+          "items": {"enum": ["chat", "json", "translate"]},
+          "uniqueItems": true
+        },
+        "order": {"type": "integer"},
+        "deprecated": {"type": "boolean"},
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/variant"}
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": ["id", "runtime", "repo", "revision", "size_gb", "memory_gb", "disk_gb", "chip"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "runtime": {"enum": ["mlx", "llamacpp"]},
+        "repo": {
+          "type": "string",
+          "pattern": "^(mlx-community|unsloth|ggml-org|pfnet|llm-jp)/[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
+        },
+        "file": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,122}\\.gguf$"
+        },
+        "revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "quant": {"type": "string", "maxLength": 32},
+        "size_gb": {"type": "number", "exclusiveMinimum": 0},
+        "memory_gb": {"type": "integer", "minimum": 1},
+        "disk_gb": {"type": "integer", "minimum": 1},
+        "chip": {"$ref": "#/$defs/label"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"runtime": {"const": "llamacpp"}}},
+          "then": {"required": ["file"]},
+          "else": {"not": {"required": ["file"]}}
+        }
+      ]
+    }
+  }
+}

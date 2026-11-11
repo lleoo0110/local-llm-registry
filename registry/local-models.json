@@ -1,0 +1,152 @@
+{
+  "schema_version": 2,
+  "makers": {
+    "qwen": {"label": "Qwen", "maker": "Alibaba Cloud", "kind": "local", "order": 4},
+    "plamo": {"label": "PLaMo", "maker": "Preferred Networks", "kind": "local", "order": 5},
+    "gemma": {"label": "Gemma", "maker": "Google DeepMind", "kind": "local", "order": 6},
+    "llm-jp": {"label": "LLM-jp", "maker": "国立情報学研究所", "kind": "local", "order": 7},
+    "gpt-oss": {"label": "gpt-oss", "maker": "OpenAI", "kind": "local", "order": 8}
+  },
+  "models": [
+    {
+      "id": "qwen3.5-4b",
+      "vendor": "qwen",
+      "family": "qwen3.5",
+      "label": "Qwen3.5 4B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 1,
+      "variants": [
+        {"id": "qwen3.5-4b", "runtime": "mlx", "repo": "mlx-community/Qwen3.5-4B-4bit", "revision": "0e7ffd5c629ef7719d4cbc04069232580bfa9d9c", "quant": "4bit", "size_gb": 3.1, "memory_gb": 8, "disk_gb": 4, "chip": "Apple M1 以降"},
+        {"id": "qwen3.5-4b-gguf", "runtime": "llamacpp", "repo": "unsloth/Qwen3.5-4B-GGUF", "file": "Qwen3.5-4B-Q4_K_M.gguf", "revision": "e87f176479d0855a907a41277aca2f8ee7a09523", "quant": "GGUF Q4_K_M", "size_gb": 2.7, "memory_gb": 8, "disk_gb": 3, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "qwen3.5-2b",
+      "vendor": "qwen",
+      "family": "qwen3.5",
+      "label": "Qwen3.5 2B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 2,
+      "variants": [
+        {"id": "qwen3.5-2b", "runtime": "mlx", "repo": "mlx-community/Qwen3.5-2B-4bit", "revision": "674aaa7240b91e8012fcad5d791b7dfe5ba90207", "quant": "4bit", "size_gb": 1.7, "memory_gb": 8, "disk_gb": 2, "chip": "Apple M1 以降"},
+        {"id": "qwen3.5-2b-gguf", "runtime": "llamacpp", "repo": "unsloth/Qwen3.5-2B-GGUF", "file": "Qwen3.5-2B-Q4_K_M.gguf", "revision": "f6d5376be1edb4d416d56da11e5397a961aca8ae", "quant": "GGUF Q4_K_M", "size_gb": 1.3, "memory_gb": 8, "disk_gb": 2, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "qwen3.5-9b",
+      "vendor": "qwen",
+      "family": "qwen3.5",
+      "label": "Qwen3.5 9B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 3,
+      "variants": [
+        {"id": "qwen3.5-9b", "runtime": "mlx", "repo": "mlx-community/Qwen3.5-9B-4bit", "revision": "8b2b98c00a6b4d291155e4890773ca8f769aee53", "quant": "4bit", "size_gb": 6.0, "memory_gb": 16, "disk_gb": 7, "chip": "Apple M1 以降"},
+        {"id": "qwen3.5-9b-gguf", "runtime": "llamacpp", "repo": "unsloth/Qwen3.5-9B-GGUF", "file": "Qwen3.5-9B-Q4_K_M.gguf", "revision": "3885219b6810b007914f3a7950a8d1b469d598a5", "quant": "GGUF Q4_K_M", "size_gb": 5.7, "memory_gb": 16, "disk_gb": 7, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "qwen3.5-27b",
+      "vendor": "qwen",
+      "family": "qwen3.5",
+      "label": "Qwen3.5 27B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 4,
+      "variants": [
+        {"id": "qwen3.5-27b", "runtime": "mlx", "repo": "mlx-community/Qwen3.5-27B-4bit", "revision": "45797d2985a12c55e6473686e9ea91b95e959553", "quant": "4bit", "size_gb": 16.1, "memory_gb": 32, "disk_gb": 18, "chip": "Apple M2 Max 以降"},
+        {"id": "qwen3.5-27b-gguf", "runtime": "llamacpp", "repo": "unsloth/Qwen3.5-27B-GGUF", "file": "Qwen3.5-27B-Q4_K_M.gguf", "revision": "3221f178a6b842d04f1fb42f1c413534adcc0a6a", "quant": "GGUF Q4_K_M", "size_gb": 16.7, "memory_gb": 32, "disk_gb": 19, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "qwen3.6-35b-a3b",
+      "vendor": "qwen",
+      "family": "qwen3.6",
+      "label": "Qwen3.6 35B-A3B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 5,
+      "variants": [
+        {"id": "qwen3.6-35b-a3b", "runtime": "mlx", "repo": "mlx-community/Qwen3.6-35B-A3B-4bit", "revision": "38740b847e4cb78f352aba30aa41c76e08e6eb46", "quant": "4bit", "size_gb": 20.4, "memory_gb": 32, "disk_gb": 22, "chip": "Apple M2 Max 以降"},
+        {"id": "qwen3.6-35b-a3b-gguf", "runtime": "llamacpp", "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF", "file": "Qwen3.6-35B-A3B-Q4_K_M.gguf", "revision": "eb0b3cc97fecddab7eee6e6ffdbe92d2a00afcea", "quant": "GGUF Q4_K_M", "size_gb": 20.5, "memory_gb": 32, "disk_gb": 22, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "plamo-3-translate-2b",
+      "vendor": "plamo",
+      "family": "plamo-3-translate",
+      "label": "PLaMo 3 翻訳 2B",
+      "kind": "translate",
+      "license": "PLaMo community license",
+      "capabilities": ["translate"],
+      "order": 1,
+      "variants": [
+        {"id": "plamo-3-translate-2b", "runtime": "mlx", "repo": "pfnet/plamo-3-translate-2b-MLX-4bit", "revision": "b715145bec63f0dfe877699adbef182439b2047a", "quant": "4bit", "size_gb": 2.4, "memory_gb": 8, "disk_gb": 3, "chip": "Apple M1 以降"},
+        {"id": "plamo-3-translate-2b-gguf", "runtime": "llamacpp", "repo": "pfnet/plamo-3-translate-2b-GGUF", "file": "plamo-3-translate-2b-Q4_K_M.gguf", "revision": "4f672106b847200bfdc0f6af6c321cd94eba1aed", "quant": "GGUF Q4_K_M", "size_gb": 1.8, "memory_gb": 8, "disk_gb": 2, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "plamo-3-translate-8b",
+      "vendor": "plamo",
+      "family": "plamo-3-translate",
+      "label": "PLaMo 3 翻訳 8B",
+      "kind": "translate",
+      "license": "PLaMo community license",
+      "capabilities": ["translate"],
+      "order": 2,
+      "variants": [
+        {"id": "plamo-3-translate-8b", "runtime": "mlx", "repo": "pfnet/plamo-3-translate-8b-MLX-4bit", "revision": "3623015236aa51fe290f02cff01135dfcadb9816", "quant": "4bit", "size_gb": 6.1, "memory_gb": 16, "disk_gb": 7, "chip": "Apple M1 以降"},
+        {"id": "plamo-3-translate-8b-gguf", "runtime": "llamacpp", "repo": "pfnet/plamo-3-translate-8b-GGUF", "file": "plamo-3-translate-8b-Q4_K_M.gguf", "revision": "c67efa4eefdc14d3c97bf8f4f35ee58e2ecd2f42", "quant": "GGUF Q4_K_M", "size_gb": 5.3, "memory_gb": 16, "disk_gb": 6, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "gemma-4-e4b",
+      "vendor": "gemma",
+      "family": "gemma-4",
+      "label": "Gemma 4 E4B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 1,
+      "variants": [
+        {"id": "gemma-4-e4b", "runtime": "mlx", "repo": "mlx-community/gemma-4-e4b-it-4bit", "revision": "475b9088d29754a3379866cf5aeb6b41acd313c2", "quant": "4bit", "size_gb": 5.2, "memory_gb": 16, "disk_gb": 6, "chip": "Apple M1 以降"},
+        {"id": "gemma-4-e4b-gguf", "runtime": "llamacpp", "repo": "unsloth/gemma-4-E4B-it-GGUF", "file": "gemma-4-E4B-it-Q4_K_M.gguf", "revision": "bfc15c382204943c3a8fff0c750b94ae2364d7a3", "quant": "GGUF Q4_K_M", "size_gb": 5.0, "memory_gb": 16, "disk_gb": 6, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "llm-jp-4-8b",
+      "vendor": "llm-jp",
+      "family": "llm-jp-4",
+      "label": "LLM-jp-4 8B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 1,
+      "variants": [
+        {"id": "llm-jp-4-8b", "runtime": "mlx", "repo": "mlx-community/llm-jp-4-8b-thinking-4bit", "revision": "c0f9483ea14a6fb566f686882449d0ad4cf6d3e0", "quant": "4bit", "size_gb": 4.8, "memory_gb": 16, "disk_gb": 6, "chip": "Apple M1 以降"},
+        {"id": "llm-jp-4-8b-gguf", "runtime": "llamacpp", "repo": "llm-jp/llm-jp-4-8b-thinking-gguf", "file": "llm-jp-4-8b-thinking-Q4_K_M.gguf", "revision": "b8391794a13521d04e82fd79c443f5745bb9f724", "quant": "GGUF Q4_K_M", "size_gb": 5.3, "memory_gb": 16, "disk_gb": 6, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "gpt-oss-20b",
+      "vendor": "gpt-oss",
+      "family": "gpt-oss",
+      "label": "gpt-oss-20b",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 1,
+      "variants": [
+        {"id": "gpt-oss-20b", "runtime": "mlx", "repo": "mlx-community/gpt-oss-20b-MXFP4-Q4", "revision": "f356f2747216d7e98fee755df25987459fc19089", "quant": "MXFP4", "size_gb": 11.2, "memory_gb": 24, "disk_gb": 13, "chip": "Apple M1 以降"},
+        {"id": "gpt-oss-20b-gguf", "runtime": "llamacpp", "repo": "ggml-org/gpt-oss-20b-GGUF", "file": "gpt-oss-20b-MXFP4.gguf", "revision": "15dcfc7e7c608c6161507211ed43c5b590801b4b", "quant": "GGUF MXFP4", "size_gb": 12.1, "memory_gb": 24, "disk_gb": 14, "chip": "Vulkan 対応の GPU"}
+      ]
+    }
+  ]
+}
