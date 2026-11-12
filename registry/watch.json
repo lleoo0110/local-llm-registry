@@ -1,0 +1,49 @@
+{
+  "rules": [
+    {
+      "vendor": "qwen", "kind": "llm", "author": "mlx-community", "search": "Qwen3.",
+      "pattern": "Qwen(?P<version>3\\.\\d+)-(?P<size>\\d+(?:\\.\\d+)?B(?:-A\\d+B)?)-4bit",
+      "min_version": "3.5",
+      "id": "qwen{version}-{size}", "family": "qwen{version}", "label": "Qwen{version} {size}",
+      "quant": "4bit", "capabilities": ["chat", "json", "translate"],
+      "gguf": "unsloth/Qwen{version}-{size}-GGUF"
+    },
+    {
+      "vendor": "gemma", "kind": "llm", "author": "mlx-community", "search": "gemma-",
+      "pattern": "gemma-(?P<version>\\d+)-(?P<size>e?\\d+b(?:-a\\d+b)?)-it-4bit",
+      "min_version": "4",
+      "id": "gemma-{version}-{size}", "family": "gemma-{version}", "label": "Gemma {version} {size_upper}",
+      "quant": "4bit", "capabilities": ["chat", "json", "translate"],
+      "gguf": "unsloth/gemma-{version}-{size_upper}-it-GGUF"
+    },
+    {
+      "vendor": "llm-jp", "kind": "llm", "author": "mlx-community", "search": "llm-jp-",
+      "pattern": "llm-jp-(?P<version>\\d+)-(?P<size>\\d+b(?:-a\\d+b)?)-thinking-4bit",
+      "min_version": "4",
+      "id": "llm-jp-{version}-{size}", "family": "llm-jp-{version}", "label": "LLM-jp-{version} {size_upper}",
+      "quant": "4bit", "capabilities": ["chat", "json", "translate"]
+    },
+    {
+      "vendor": "gpt-oss", "kind": "llm", "author": "mlx-community", "search": "gpt-oss-",
+      "pattern": "gpt-oss-(?P<size>\\d+b)-MXFP4-Q4",
+      "id": "gpt-oss-{size}", "family": "gpt-oss", "label": "gpt-oss-{size}",
+      "quant": "MXFP4", "capabilities": ["chat", "json", "translate"]
+    },
+    {
+      "vendor": "whisper", "kind": "asr", "author": "mlx-community", "search": "whisper-large-",
+      "pattern": "whisper-large-v(?P<version>\\d+)-turbo",
+      "min_version": "3",
+      "id": "whisper-large-v{version}-turbo", "family": "whisper", "label": "Whisper large-v{version}-turbo",
+      "license": "MIT"
+    },
+    {
+      "vendor": "qwen3-asr", "kind": "asr", "author": "mlx-community", "search": "Qwen3-ASR-",
+      "pattern": "Qwen3-ASR-(?P<size>\\d+(?:\\.\\d+)?B)-8bit",
+      "id": "qwen3-asr-{size}", "family": "qwen3-asr", "label": "Qwen3-ASR {size}",
+      "quant": "8bit"
+    }
+  ],
+  "ignore": [
+    "mlx-community/Qwen3-ASR-0.6B-8bit"
+  ]
+}

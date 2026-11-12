@@ -1,0 +1,87 @@
+# 毎日 Hugging Face を見て台帳を更新する．
+# revisions: 載っている版が main で新しくなっていれば，検証してから main へ直接反映する（アプリに「更新」が出る）．
+# discover: watch.json の規則に合う新しいモデルを見つけたら，1 本ずつプルリクエストにする（マージは人が行う）．
+name: update
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  revisions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install check-jsonschema
+      - name: 版を取り直す
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/registry_bot.py update-revisions --summary "$RUNNER_TEMP/summary.txt"
+      - run: check-jsonschema --schemafile registry/local-models.schema.json registry/local-models.json
+      - name: main へ反映する
+        run: |
+          if git diff --quiet; then
+            echo "変わった版は無い"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -q -am "chore(bot): 版を更新する" -m "$(cat "$RUNNER_TEMP/summary.txt")"
+          git push -q origin HEAD:main
+
+  discover:
+    needs: revisions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install check-jsonschema
+      - name: 新しいモデルを探す
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python scripts/registry_bot.py discover --out "$RUNNER_TEMP/candidates.json"
+      - name: 候補ごとにプルリクエストを作る
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for id in $(jq -r '.[].id' "$RUNNER_TEMP/candidates.json"); do
+            branch="bot/add-$id"
+            # 開いている PR も閉じた PR も，同じ候補を作り直さない（閉じたものは却下として扱う）
+            if [ -n "$(gh pr list --state all --head "$branch" --json number --jq '.[].number')" ]; then
+              echo "[skip] $id は PR がある"
+              continue
+            fi
+            if git ls-remote --exit-code --heads origin "$branch" >/dev/null; then
+              echo "[skip] $id はブランチがある"
+              continue
+            fi
+            git switch -q -c "$branch" origin/main
+            python scripts/registry_bot.py apply --from "$RUNNER_TEMP/candidates.json" --id "$id" --body "$RUNNER_TEMP/body.md"
+            check-jsonschema --schemafile registry/local-models.schema.json registry/local-models.json
+            label=$(jq -r --arg id "$id" '.[] | select(.id == $id) | .label' "$RUNNER_TEMP/candidates.json")
+            git commit -q -am "$label を足す"
+            git push -q origin "$branch"
+            gh pr create --base main --head "$branch" --title "$label を足す" --body-file "$RUNNER_TEMP/body.md"
+            git switch -q main
+          done

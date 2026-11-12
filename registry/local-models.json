@@ -5,7 +5,9 @@
     "plamo": {"label": "PLaMo", "maker": "Preferred Networks", "kind": "local", "order": 5},
     "gemma": {"label": "Gemma", "maker": "Google DeepMind", "kind": "local", "order": 6},
     "llm-jp": {"label": "LLM-jp", "maker": "国立情報学研究所", "kind": "local", "order": 7},
-    "gpt-oss": {"label": "gpt-oss", "maker": "OpenAI", "kind": "local", "order": 8}
+    "gpt-oss": {"label": "gpt-oss", "maker": "OpenAI", "kind": "local", "order": 8},
+    "whisper": {"label": "Whisper", "maker": "OpenAI", "kind": "local", "order": 9},
+    "qwen3-asr": {"label": "Qwen3-ASR", "maker": "Alibaba Cloud", "kind": "local", "order": 10}
   },
   "models": [
     {
@@ -118,6 +120,20 @@
       "variants": [
         {"id": "qwen3.6-35b-a3b", "runtime": "mlx", "repo": "mlx-community/Qwen3.6-35B-A3B-4bit", "revision": "38740b847e4cb78f352aba30aa41c76e08e6eb46", "quant": "4bit", "size_gb": 20.4, "memory_gb": 32, "disk_gb": 22, "chip": "Apple M2 Max 以降"},
         {"id": "qwen3.6-35b-a3b-gguf", "runtime": "llamacpp", "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF", "file": "Qwen3.6-35B-A3B-Q4_K_M.gguf", "revision": "eb0b3cc97fecddab7eee6e6ffdbe92d2a00afcea", "quant": "GGUF Q4_K_M", "size_gb": 20.5, "memory_gb": 32, "disk_gb": 22, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "qwen3.8-27b",
+      "vendor": "qwen",
+      "family": "qwen3.8",
+      "label": "Qwen3.8 27B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 9,
+      "variants": [
+        {"id": "qwen3.8-27b", "runtime": "mlx", "repo": "mlx-community/Qwen3.8-27B-4bit", "revision": "b935172e4bb5dcd0543774a34748fb92422e3027", "quant": "4bit", "size_gb": 16.1, "memory_gb": 32, "disk_gb": 18, "chip": "Apple M2 Max 以降"},
+        {"id": "qwen3.8-27b-gguf", "runtime": "llamacpp", "repo": "unsloth/Qwen3.8-27B-GGUF", "file": "Qwen3.8-27B-UD-Q4_K_M.gguf", "revision": "4af51b3542f775b0a8e4b310bfb3f17e01c306c9", "quant": "GGUF Q4_K_M", "size_gb": 16.6, "memory_gb": 32, "disk_gb": 19, "chip": "Vulkan 対応の GPU"}
       ]
     },
     {
@@ -268,6 +284,30 @@
       "variants": [
         {"id": "gpt-oss-20b", "runtime": "mlx", "repo": "mlx-community/gpt-oss-20b-MXFP4-Q4", "revision": "f356f2747216d7e98fee755df25987459fc19089", "quant": "MXFP4", "size_gb": 11.2, "memory_gb": 24, "disk_gb": 13, "chip": "Apple M1 以降"},
         {"id": "gpt-oss-20b-gguf", "runtime": "llamacpp", "repo": "ggml-org/gpt-oss-20b-GGUF", "file": "gpt-oss-20b-MXFP4.gguf", "revision": "15dcfc7e7c608c6161507211ed43c5b590801b4b", "quant": "GGUF MXFP4", "size_gb": 12.1, "memory_gb": 24, "disk_gb": 14, "chip": "Vulkan 対応の GPU"}
+      ]
+    },
+    {
+      "id": "whisper-large-v3-turbo",
+      "vendor": "whisper",
+      "family": "whisper",
+      "label": "Whisper large-v3-turbo",
+      "kind": "asr",
+      "license": "MIT",
+      "order": 1,
+      "variants": [
+        {"id": "whisper-large-v3-turbo", "runtime": "mlx", "repo": "mlx-community/whisper-large-v3-turbo", "revision": "a4aaeec0636e6fef84abdcbe3544cb2bf7e9f6fb", "size_gb": 1.6, "memory_gb": 8, "disk_gb": 2, "chip": "Apple M1 以降"}
+      ]
+    },
+    {
+      "id": "qwen3-asr-1.7b",
+      "vendor": "qwen3-asr",
+      "family": "qwen3-asr",
+      "label": "Qwen3-ASR 1.7B",
+      "kind": "asr",
+      "license": "Apache-2.0",
+      "order": 1,
+      "variants": [
+        {"id": "qwen3-asr-1.7b", "runtime": "mlx", "repo": "mlx-community/Qwen3-ASR-1.7B-8bit", "revision": "a8379a2e2f9e313c9292cdf1af4055ab56d50d55", "quant": "8bit", "size_gb": 2.5, "memory_gb": 8, "disk_gb": 3, "chip": "Apple M1 以降"}
       ]
     }
   ]
