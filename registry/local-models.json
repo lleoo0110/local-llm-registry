@@ -137,6 +137,19 @@
       ]
     },
     {
+      "id": "qwen3.5-122b-a10b",
+      "vendor": "qwen",
+      "family": "qwen3.5",
+      "label": "Qwen3.5 122B-A10B",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 10,
+      "variants": [
+        {"id": "qwen3.5-122b-a10b", "runtime": "mlx", "repo": "mlx-community/Qwen3.5-122B-A10B-4bit", "revision": "e9c67b08899964be5fdd069bb1b4bc8907fe68f5", "quant": "4bit", "size_gb": 69.6, "memory_gb": 128, "disk_gb": 77, "chip": "Apple M2 Max 以降"}
+      ]
+    },
+    {
       "id": "plamo-3-translate-2b",
       "vendor": "plamo",
       "family": "plamo-3-translate",
