@@ -287,6 +287,19 @@
       ]
     },
     {
+      "id": "gpt-oss-120b",
+      "vendor": "gpt-oss",
+      "family": "gpt-oss",
+      "label": "gpt-oss-120b",
+      "kind": "llm",
+      "license": "Apache-2.0",
+      "capabilities": ["chat", "json", "translate"],
+      "order": 2,
+      "variants": [
+        {"id": "gpt-oss-120b", "runtime": "mlx", "repo": "mlx-community/gpt-oss-120b-MXFP4-Q4", "revision": "bce781bef0f2fc85ed4e575af74054f5aad73ddd", "quant": "MXFP4", "size_gb": 62.3, "memory_gb": 96, "disk_gb": 69, "chip": "Apple M2 Max 以降"}
+      ]
+    },
+    {
       "id": "whisper-large-v3-turbo",
       "vendor": "whisper",
       "family": "whisper",
