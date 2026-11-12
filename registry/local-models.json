@@ -119,7 +119,7 @@
       "order": 8,
       "variants": [
         {"id": "qwen3.6-35b-a3b", "runtime": "mlx", "repo": "mlx-community/Qwen3.6-35B-A3B-4bit", "revision": "38740b847e4cb78f352aba30aa41c76e08e6eb46", "quant": "4bit", "size_gb": 20.4, "memory_gb": 32, "disk_gb": 22, "chip": "Apple M2 Max 以降"},
-        {"id": "qwen3.6-35b-a3b-gguf", "runtime": "llamacpp", "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF", "file": "Qwen3.6-35B-A3B-Q4_K_M.gguf", "revision": "eb0b3cc97fecddab7eee6e6ffdbe92d2a00afcea", "quant": "GGUF Q4_K_M", "size_gb": 20.5, "memory_gb": 32, "disk_gb": 22, "chip": "Vulkan 対応の GPU"}
+        {"id": "qwen3.6-35b-a3b-gguf", "runtime": "llamacpp", "repo": "ggml-org/Qwen3.6-35B-A3B-GGUF", "file": "Qwen3.6-35B-A3B-Q4_K_M.gguf", "revision": "52f9f9b8052fb9c8b69bba4a95eda0f319ac3d2a", "quant": "GGUF Q4_K_M", "size_gb": 20.5, "memory_gb": 32, "disk_gb": 23, "chip": "Vulkan 対応の GPU"}
       ]
     },
     {
@@ -283,7 +283,7 @@
       "order": 1,
       "variants": [
         {"id": "gpt-oss-20b", "runtime": "mlx", "repo": "mlx-community/gpt-oss-20b-MXFP4-Q4", "revision": "f356f2747216d7e98fee755df25987459fc19089", "quant": "MXFP4", "size_gb": 11.2, "memory_gb": 24, "disk_gb": 13, "chip": "Apple M1 以降"},
-        {"id": "gpt-oss-20b-gguf", "runtime": "llamacpp", "repo": "ggml-org/gpt-oss-20b-GGUF", "file": "gpt-oss-20b-MXFP4.gguf", "revision": "15dcfc7e7c608c6161507211ed43c5b590801b4b", "quant": "GGUF MXFP4", "size_gb": 12.1, "memory_gb": 24, "disk_gb": 14, "chip": "Vulkan 対応の GPU"}
+        {"id": "gpt-oss-20b-gguf", "runtime": "llamacpp", "repo": "ggml-org/gpt-oss-20b-GGUF", "file": "gpt-oss-20b-MXFP4.gguf", "revision": "41e8a94d15d62070b36cf4553a0250717ecf46b8", "quant": "GGUF MXFP4", "size_gb": 12.1, "memory_gb": 24, "disk_gb": 14, "chip": "Vulkan 対応の GPU"}
       ]
     },
     {
