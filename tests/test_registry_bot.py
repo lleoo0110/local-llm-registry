@@ -153,3 +153,11 @@ def test_commands_write_candidates_and_apply_them(tmp_path, monkeypatch):
     assert [m["id"] for m in bot.load(registry)["models"]] == ["qwen3.5-4b", "qwen3.9-14b"]
     assert "推定値" in body.read_text(encoding="utf-8")
     assert bot.main(["apply", "--from", str(out), "--id", "missing"]) == 1
+
+
+def test_the_writer_keeps_the_companies_block():
+    document = bot.load()
+    assert list(document)[:3] == ["schema_version", "companies", "makers"]
+    assert json.loads(bot.dump(document)) == document
+    # 開発元はすべて会社に属する
+    assert all(maker["company"] in document["companies"] for maker in document["makers"].values())

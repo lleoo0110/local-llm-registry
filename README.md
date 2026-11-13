@@ -7,6 +7,8 @@
 - `registry/watch.json`: 自動更新が新しいモデルを探す規則
 - `releases.json`: 版番号の一覧
 
+3 アプリ（PaperStudioAI・Tsuzuri・GraphBCI）が台帳と設定画面をどう扱うかは [SPEC.md](SPEC.md) にある．各アプリの同梱台帳へは `scripts/sync_registry.py` で取り込む．
+
 モデル本体は含まない．取得は Hugging Face から直接行い，利用は各モデルのライセンスに従う．
 
 ## 自動更新

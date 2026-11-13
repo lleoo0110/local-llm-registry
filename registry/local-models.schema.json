@@ -2,10 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "local-models",
   "type": "object",
-  "required": ["schema_version", "makers", "models"],
+  "required": ["schema_version", "companies", "makers", "models"],
   "additionalProperties": false,
   "properties": {
     "schema_version": {"const": 2},
+    "companies": {
+      "type": "object",
+      "propertyNames": {"$ref": "#/$defs/id"},
+      "additionalProperties": {"$ref": "#/$defs/company"}
+    },
     "makers": {
       "type": "object",
       "propertyNames": {"$ref": "#/$defs/id"},
@@ -22,13 +27,25 @@
       "pattern": "^[a-z0-9]([a-z0-9._-]{0,62}[a-z0-9])?$"
     },
     "label": {"type": "string", "minLength": 1, "maxLength": 80},
+    "company": {
+      "type": "object",
+      "required": ["label", "order"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {"$ref": "#/$defs/label"},
+        "order": {"type": "integer"},
+        "summary": {"type": "string", "maxLength": 400},
+        "aliases": {"type": "array", "items": {"$ref": "#/$defs/label"}, "uniqueItems": true}
+      }
+    },
     "maker": {
       "type": "object",
-      "required": ["label", "maker", "kind", "order"],
+      "required": ["label", "maker", "company", "kind", "order"],
       "additionalProperties": false,
       "properties": {
         "label": {"$ref": "#/$defs/label"},
         "maker": {"$ref": "#/$defs/label"},
+        "company": {"$ref": "#/$defs/id"},
         "kind": {"enum": ["local"]},
         "order": {"type": "integer"}
       }
@@ -67,7 +84,7 @@
         "runtime": {"enum": ["mlx", "llamacpp"]},
         "repo": {
           "type": "string",
-          "pattern": "^(mlx-community|unsloth|ggml-org|pfnet|llm-jp)/[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
+          "pattern": "^(mlx-community|unsloth|ggml-org|pfnet|llm-jp|kotoba-tech)/[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
         },
         "file": {
           "type": "string",

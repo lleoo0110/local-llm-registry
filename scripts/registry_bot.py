@@ -23,6 +23,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import sync_registry  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry" / "local-models.json"
 WATCH = ROOT / "registry" / "watch.json"
@@ -92,26 +95,8 @@ def _compact(value: Any) -> str:
 
 
 def dump(document: dict[str, Any]) -> str:
-    """台帳を，開発元と版を 1 行ずつ置く書式で返す．差分が行単位で読めるよう，手で書いた形と揃える．"""
-    lines = ["{", f'  "schema_version": {document["schema_version"]},', '  "makers": {']
-    makers = list(document["makers"].items())
-    for index, (maker_id, maker) in enumerate(makers):
-        lines.append(f"    {_compact(maker_id)}: {_compact(maker)}" + ("," if index < len(makers) - 1 else ""))
-    lines += ["  },", '  "models": [']
-    models = document["models"]
-    for index, model in enumerate(models):
-        lines.append("    {")
-        keys = [key for key in model if key != "variants"]
-        for key in keys:
-            lines.append(f"      {_compact(key)}: {_compact(model[key])},")
-        lines.append('      "variants": [')
-        variants = model["variants"]
-        for position, variant in enumerate(variants):
-            lines.append(f"        {_compact(variant)}" + ("," if position < len(variants) - 1 else ""))
-        lines.append("      ]")
-        lines.append("    }" + ("," if index < len(models) - 1 else ""))
-    lines += ["  ]", "}"]
-    return "\n".join(lines) + "\n"
+    """台帳を，会社・開発元・版を 1 行ずつ置く書式で返す．書式はアプリへ取り込む sync_registry と共通にする．"""
+    return sync_registry.dump(document)
 
 
 def save(document: dict[str, Any], path: Path | None = None) -> None:

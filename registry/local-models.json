@@ -1,13 +1,22 @@
 {
   "schema_version": 2,
+  "companies": {
+    "anthropic": {"label": "Anthropic", "order": 1, "summary": "Claude を開発する会社"},
+    "openai": {"label": "OpenAI", "order": 2, "summary": "GPT と，重みを公開した gpt-oss・Whisper を開発する会社"},
+    "google": {"label": "Google", "order": 3, "summary": "Gemini と，重みを公開した Gemma を開発する会社", "aliases": ["Google DeepMind"]},
+    "alibaba": {"label": "Alibaba Cloud", "order": 4, "summary": "Qwen の LLM と音声認識を開発する会社"},
+    "pfn": {"label": "Preferred Networks", "order": 5, "summary": "翻訳専用の PLaMo を開発する会社"},
+    "nii": {"label": "国立情報学研究所", "order": 6, "summary": "日本語を重視した LLM-jp を主宰する研究所"},
+    "kotoba": {"label": "Kotoba Technologies", "order": 7, "summary": "日本語の音声認識 kotoba-whisper を開発する会社"}
+  },
   "makers": {
-    "qwen": {"label": "Qwen", "maker": "Alibaba Cloud", "kind": "local", "order": 4},
-    "plamo": {"label": "PLaMo", "maker": "Preferred Networks", "kind": "local", "order": 5},
-    "gemma": {"label": "Gemma", "maker": "Google DeepMind", "kind": "local", "order": 6},
-    "llm-jp": {"label": "LLM-jp", "maker": "国立情報学研究所", "kind": "local", "order": 7},
-    "gpt-oss": {"label": "gpt-oss", "maker": "OpenAI", "kind": "local", "order": 8},
-    "whisper": {"label": "Whisper", "maker": "OpenAI", "kind": "local", "order": 9},
-    "qwen3-asr": {"label": "Qwen3-ASR", "maker": "Alibaba Cloud", "kind": "local", "order": 10}
+    "qwen": {"label": "Qwen", "maker": "Alibaba Cloud", "kind": "local", "order": 4, "company": "alibaba"},
+    "plamo": {"label": "PLaMo", "maker": "Preferred Networks", "kind": "local", "order": 5, "company": "pfn"},
+    "gemma": {"label": "Gemma", "maker": "Google DeepMind", "kind": "local", "order": 6, "company": "google"},
+    "llm-jp": {"label": "LLM-jp", "maker": "国立情報学研究所", "kind": "local", "order": 7, "company": "nii"},
+    "gpt-oss": {"label": "gpt-oss", "maker": "OpenAI", "kind": "local", "order": 8, "company": "openai"},
+    "whisper": {"label": "Whisper", "maker": "OpenAI", "kind": "local", "order": 9, "company": "openai"},
+    "qwen3-asr": {"label": "Qwen3-ASR", "maker": "Alibaba Cloud", "kind": "local", "order": 10, "company": "alibaba"}
   },
   "models": [
     {
