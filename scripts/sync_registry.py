@@ -36,8 +36,11 @@ def read(source: str) -> dict[str, Any]:
     """公開台帳を読む．source は URL かファイルのパス．"""
     if source.startswith(("https://", "http://")):
         with urllib.request.urlopen(source, timeout=TIMEOUT) as response:  # noqa: S310
-            return json.loads(response.read().decode("utf-8"))
-    return json.loads(Path(source).read_text(encoding="utf-8"))
+            text = response.read().decode("utf-8")
+    else:
+        text = Path(source).read_text(encoding="utf-8")
+    document: dict[str, Any] = json.loads(text)
+    return document
 
 
 def _overlay(base: dict[str, Any], top: dict[str, Any]) -> dict[str, Any]:
