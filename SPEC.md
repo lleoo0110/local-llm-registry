@@ -117,7 +117,7 @@ PaperStudioAI・Tsuzuri・GraphBCI の 3 アプリは，モデルの設定画面
 | アプリ | 読む種類 | ローカルの実装 | 工程 |
 |---|---|---|---|
 | PaperStudioAI | `llm`・`translate` | mlx（Mac）・llama.cpp（Windows） | Translate・Summarize・AI など．翻訳専用モデルは Translate だけ |
-| Tsuzuri | `llm`・`asr` | mlx・transformers（文字起こし） | 整形・要約・文字起こしなど．文字起こしは別のピッカー |
+| Tsuzuri | `llm`・`asr` | mlx | 整形・要約・文字起こしなど．文字起こしは別のピッカー |
 | GraphBCI | `llm` | mlx（Mac）・llama.cpp（Windows） | AI のチャット |
 
 設定ファイルの鍵の名前とローカルの経路名（`local-mlx` / `local` など）は各アプリの内部の都合で，画面と操作には現れない．
