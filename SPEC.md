@@ -36,7 +36,7 @@ PaperStudioAI・Tsuzuri・GraphBCI の 3 アプリは，モデルの設定画面
 | 取得の間隔 | 起動時に裏で 1 回．前回から 24 時間以内なら通信しない．`refresh(force=True)` は間隔を無視する |
 | 取得の停止 | 設定の「更新を確認する」を切ると通信しない．取得先の環境変数（`<APP>_FEED_BASE`）を空文字にしても止まる |
 | キャッシュ | `<データフォルダ>/feeds/local-models.json`．読むたびに検証する |
-| 検証 | `schema_version` が 2 でなければ全体を捨てる．形に合わない行だけを捨てる．id は Windows の装置名（`con`・`nul` など）を弾く．`repo` の組織は `mlx-community`・`unsloth`・`ggml-org`・`pfnet`・`llm-jp`・`kotoba-tech` に限る．`trust_remote_code` と `bundled` は写さない |
+| 検証 | `schema_version` が 2 でなければ全体を捨てる．形に合わない行だけを捨てる．id は Windows の装置名（`con`・`nul` など）を弾く．`repo` の組織は `mlx-community`・`unsloth`・`ggml-org`・`pfnet`・`llm-jp` に限る．`trust_remote_code` と `bundled` は写さない |
 | 会社 | 同梱の会社に正本の会社を重ねる．正本にだけある開発元は `company`，無ければ `maker` を会社の `label` か `aliases` と照らして属させる．照らせなければ会社名をそのまま 1 社にする |
 | 重ねる項目 | 会社・開発元・モデルの `label`・`summary`・`order`，モデルの `capabilities`，版の `size_gb`・`disk_gb`・`revision`（`repo` が同じときだけ．リポジトリのコードを実行する版（`trust_remote_code`）は，同梱台帳が固定した版から動かさない） |
 | 足す行 | 正本にだけある版とモデルを足す．開発元が `local` で，アプリが読む種類のものに限る |

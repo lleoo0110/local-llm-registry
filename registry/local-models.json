@@ -6,8 +6,7 @@
     "google": {"label": "Google", "order": 3, "summary": "Gemini と，重みを公開した Gemma を開発する会社", "aliases": ["Google DeepMind"]},
     "alibaba": {"label": "Alibaba Cloud", "order": 4, "summary": "Qwen の LLM と音声認識を開発する会社"},
     "pfn": {"label": "Preferred Networks", "order": 5, "summary": "翻訳専用の PLaMo を開発する会社"},
-    "nii": {"label": "国立情報学研究所", "order": 6, "summary": "日本語を重視した LLM-jp を主宰する研究所"},
-    "kotoba": {"label": "Kotoba Technologies", "order": 7, "summary": "日本語の音声認識 kotoba-whisper を開発する会社"}
+    "nii": {"label": "国立情報学研究所", "order": 6, "summary": "日本語を重視した LLM-jp を主宰する研究所"}
   },
   "makers": {
     "qwen": {"label": "Qwen", "maker": "Alibaba Cloud", "kind": "local", "order": 4, "company": "alibaba"},

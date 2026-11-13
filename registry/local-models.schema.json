@@ -84,7 +84,7 @@
         "runtime": {"enum": ["mlx", "llamacpp"]},
         "repo": {
           "type": "string",
-          "pattern": "^(mlx-community|unsloth|ggml-org|pfnet|llm-jp|kotoba-tech)/[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
+          "pattern": "^(mlx-community|unsloth|ggml-org|pfnet|llm-jp)/[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"
         },
         "file": {
           "type": "string",
