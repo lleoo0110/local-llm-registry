@@ -100,3 +100,10 @@ def test_check_reports_a_bundled_registry_that_is_behind(tmp_path):
     assert sync.main([*args, "--check"]) == 1
     assert sync.main(args) == 0
     assert sync.main([*args, "--check"]) == 0
+
+
+def test_companies_are_placed_after_the_schema_version():
+    plain = bundled()
+    del plain["companies"]
+    merged = sync.merge(plain, public(), kinds=("llm",))
+    assert list(merged)[:3] == ["_comment", "schema_version", "companies"]

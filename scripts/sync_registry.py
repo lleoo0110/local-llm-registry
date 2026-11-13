@@ -2,7 +2,8 @@
 """公開台帳（registry/local-models.json）を，アプリの同梱台帳へ取り込む．
 
 台帳の正本は公開台帳である（SPEC.md）．各アプリの同梱台帳は，公開台帳の写しにアプリ専用の項目を足したものにする．
-このスクリプトは 3 アプリ（PaperStudioAI・Tsuzuri・GraphBCI）の packaging/ へ同じ内容で写して使う．標準ライブラリだけで動く．
+このスクリプトは 3 アプリ（PaperStudioAI・Tsuzuri・GraphBCI）の packaging/ へ同じ内容で写して使う．
+標準ライブラリだけで動く．
 
 取り込みの規則:
 - 会社・開発元・モデル・版は，公開の値で上書きする．公開に無い項目（summary・recommended・apps・bundled・
@@ -63,7 +64,12 @@ def _merge_model(own: dict[str, Any], public: dict[str, Any]) -> dict[str, Any]:
 def merge(bundled: dict[str, Any], public: dict[str, Any], kinds: tuple[str, ...]) -> dict[str, Any]:
     """同梱台帳に公開台帳を取り込んだ台帳を返す．引数は変えない．"""
     result = copy.deepcopy(bundled)
-    companies = result.setdefault("companies", {})
+    if "companies" not in result:
+        # 会社は schema_version の直後に置く（公開台帳と同じ並び）
+        keys = list(result)
+        at = keys.index("schema_version") + 1 if "schema_version" in keys else 0
+        result = {**{key: result[key] for key in keys[:at]}, "companies": {}, **{key: result[key] for key in keys[at:]}}
+    companies = result["companies"]
     for company_id, company in public.get("companies", {}).items():
         companies[company_id] = _overlay(companies.get(company_id, {}), company)
 
