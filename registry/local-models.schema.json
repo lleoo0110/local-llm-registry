@@ -63,7 +63,7 @@
         "license": {"$ref": "#/$defs/label"},
         "capabilities": {
           "type": "array",
-          "items": {"enum": ["chat", "json", "translate"]},
+          "items": {"enum": ["chat", "json", "translate", "tools"]},
           "uniqueItems": true
         },
         "order": {"type": "integer"},

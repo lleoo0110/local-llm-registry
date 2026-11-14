@@ -22,6 +22,7 @@ PaperStudioAI・Tsuzuri・GraphBCI の 3 アプリは，モデルの設定画面
 - `companies`: 会社．`label`・`order`・`summary`・`aliases`（開発元の `maker` と照らす別名）
 - `makers`: 開発元．`label`・`maker`（会社名）・`company`（会社の id）・`kind`（正本は `local` だけ）・`order`
 - `models[]`: モデル．`id`・`vendor`（開発元の id）・`family`・`label`・`kind`（`llm`・`translate`・`asr`）・`license`・`capabilities`・`order`・`deprecated`・`variants[]`
+- `capabilities`: できること．`chat`（会話）・`json`（JSON の出力に従う）・`translate`（翻訳）・`tools`（ツール呼び出しの書式を守る．GraphBCI の AI チャットは `tools` を持つモデルにだけグラフを操作するツールを渡す）．アプリは知らない語を読み飛ばす
 - `variants[]`: 版．`id`（設定と置き場のフォルダ名）・`runtime`（`mlx` は Apple Silicon の mlx-lm，`llamacpp` は Windows の llama-server が読む GGUF）・`repo`・`file`（GGUF だけ必須）・`revision`（40 桁の sha）・`quant`・`size_gb`・`memory_gb`・`disk_gb`・`chip`
 
 厳密な定義は `registry/local-models.schema.json` にある．
